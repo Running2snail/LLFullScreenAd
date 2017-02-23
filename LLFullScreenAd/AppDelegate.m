@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "LLFullScreenAdView.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -15,11 +17,46 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = [[ViewController alloc] init];
+    [self.window makeKeyAndVisible];
+    
+    [self addADView];       // 添加广告图
+    [self getADImageURL];
     return YES;
 }
 
+/** 添加广告图 */
+- (void)addADView
+{
+    LLFullScreenAdView *adView = [[LLFullScreenAdView alloc] init];
+    adView.tag = 100;
+    adView.duration = 6;
+    adView.waitTime = 5;
+    adView.skipType = SkipButtonTypeCircleAnimationTest;
+    adView.adImageTapBlock = ^(NSString *content) {
+        NSLog(@"%@", content);
+    };
+    [self.window addSubview:adView];
+}
+
+/** 获取广告图URL */
+- (void)getADImageURL
+{
+    // 此处推荐使用tag来获取adView，勿使用全局变量。因为在AppDelegate中将其设为全局变量时，不会被释放
+    LLFullScreenAdView *adView = (LLFullScreenAdView *)[self.window viewWithTag:100];
+    
+    // 模拟从服务器上获取广告图URL
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        NSString *urlString = @"http://s8.mogucdn.com/p2/170222/28n_8a04gdc37ik8b20a68cdkcah227eh_750x1334.jpg";
+        
+        [adView reloadAdImageWithUrl:urlString]; // 加载广告图
+    });
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

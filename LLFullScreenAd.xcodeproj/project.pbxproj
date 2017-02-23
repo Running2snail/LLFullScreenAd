@@ -14,6 +14,8 @@
 		03356D971E5EBA9900C727FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03356D961E5EBA9900C727FF /* Assets.xcassets */; };
 		03356D9A1E5EBA9900C727FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03356D981E5EBA9900C727FF /* LaunchScreen.storyboard */; };
 		03356DA51E5EBA9900C727FF /* LLFullScreenAdUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03356DA41E5EBA9900C727FF /* LLFullScreenAdUITests.m */; };
+		03356DB11E5EBAD600C727FF /* LLFullScreenAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03356DB01E5EBAD600C727FF /* LLFullScreenAdView.m */; };
+		D59530F8ECB7B68C69D7576C /* libPods-LLFullScreenAd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FCF4755C35376DAC22FC7DA /* libPods-LLFullScreenAd.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,11 @@
 		03356DA01E5EBA9900C727FF /* LLFullScreenAdUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LLFullScreenAdUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03356DA41E5EBA9900C727FF /* LLFullScreenAdUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LLFullScreenAdUITests.m; sourceTree = "<group>"; };
 		03356DA61E5EBA9900C727FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03356DAF1E5EBAD600C727FF /* LLFullScreenAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLFullScreenAdView.h; sourceTree = "<group>"; };
+		03356DB01E5EBAD600C727FF /* LLFullScreenAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLFullScreenAdView.m; sourceTree = "<group>"; };
+		7D862030D2EC928F85F06472 /* Pods-LLFullScreenAd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LLFullScreenAd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LLFullScreenAd/Pods-LLFullScreenAd.debug.xcconfig"; sourceTree = "<group>"; };
+		7FCF4755C35376DAC22FC7DA /* libPods-LLFullScreenAd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LLFullScreenAd.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C440878EEDB37F6DE8ACB343 /* Pods-LLFullScreenAd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LLFullScreenAd.release.xcconfig"; path = "Pods/Target Support Files/Pods-LLFullScreenAd/Pods-LLFullScreenAd.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D59530F8ECB7B68C69D7576C /* libPods-LLFullScreenAd.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +74,8 @@
 				03356D891E5EBA9800C727FF /* LLFullScreenAd */,
 				03356DA31E5EBA9900C727FF /* LLFullScreenAdUITests */,
 				03356D881E5EBA9800C727FF /* Products */,
+				95166142BC2140599F093EDA /* Pods */,
+				22E62B0DEA837E4F7C675511 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +95,8 @@
 				03356D8E1E5EBA9800C727FF /* AppDelegate.m */,
 				03356D901E5EBA9800C727FF /* ViewController.h */,
 				03356D911E5EBA9800C727FF /* ViewController.m */,
+				03356DAF1E5EBAD600C727FF /* LLFullScreenAdView.h */,
+				03356DB01E5EBAD600C727FF /* LLFullScreenAdView.m */,
 				03356D931E5EBA9900C727FF /* Main.storyboard */,
 				03356D961E5EBA9900C727FF /* Assets.xcassets */,
 				03356D981E5EBA9900C727FF /* LaunchScreen.storyboard */,
@@ -111,6 +123,23 @@
 			path = LLFullScreenAdUITests;
 			sourceTree = "<group>";
 		};
+		22E62B0DEA837E4F7C675511 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7FCF4755C35376DAC22FC7DA /* libPods-LLFullScreenAd.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		95166142BC2140599F093EDA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7D862030D2EC928F85F06472 /* Pods-LLFullScreenAd.debug.xcconfig */,
+				C440878EEDB37F6DE8ACB343 /* Pods-LLFullScreenAd.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -118,9 +147,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03356DA91E5EBA9900C727FF /* Build configuration list for PBXNativeTarget "LLFullScreenAd" */;
 			buildPhases = (
+				49EF16929FCA8F3E4239BF93 /* [CP] Check Pods Manifest.lock */,
 				03356D831E5EBA9800C727FF /* Sources */,
 				03356D841E5EBA9800C727FF /* Frameworks */,
 				03356D851E5EBA9800C727FF /* Resources */,
+				058663A9331AE220D7ABE7CB /* [CP] Embed Pods Frameworks */,
+				0B6E9F6E2EF51DAA39A1948A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -210,6 +242,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		058663A9331AE220D7ABE7CB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LLFullScreenAd/Pods-LLFullScreenAd-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0B6E9F6E2EF51DAA39A1948A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LLFullScreenAd/Pods-LLFullScreenAd-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		49EF16929FCA8F3E4239BF93 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		03356D831E5EBA9800C727FF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -217,6 +297,7 @@
 			files = (
 				03356D921E5EBA9800C727FF /* ViewController.m in Sources */,
 				03356D8F1E5EBA9800C727FF /* AppDelegate.m in Sources */,
+				03356DB11E5EBAD600C727FF /* LLFullScreenAdView.m in Sources */,
 				03356D8C1E5EBA9800C727FF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,7 +380,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -340,7 +421,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -349,8 +430,10 @@
 		};
 		03356DAA1E5EBA9900C727FF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D862030D2EC928F85F06472 /* Pods-LLFullScreenAd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 36H94N4GDC;
 				INFOPLIST_FILE = LLFullScreenAd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -361,8 +444,10 @@
 		};
 		03356DAB1E5EBA9900C727FF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C440878EEDB37F6DE8ACB343 /* Pods-LLFullScreenAd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 36H94N4GDC;
 				INFOPLIST_FILE = LLFullScreenAd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -414,6 +499,7 @@
 				03356DAB1E5EBA9900C727FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		03356DAC1E5EBA9900C727FF /* Build configuration list for PBXNativeTarget "LLFullScreenAdUITests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +508,7 @@
 				03356DAE1E5EBA9900C727FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
