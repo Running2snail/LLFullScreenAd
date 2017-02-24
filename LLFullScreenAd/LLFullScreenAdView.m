@@ -109,7 +109,7 @@
 }
 
 /* 绘制路径
- * path这个属性必须需要设置，不然是没有效果的
+ * path这个属性必须需要设置，不然是没有效果的/
  */
 - (UIBezierPath *)getCirclePath
 {
