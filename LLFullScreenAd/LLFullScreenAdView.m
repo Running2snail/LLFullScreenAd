@@ -41,7 +41,8 @@
         _skipButton.layer.cornerRadius = 15;
         _skipButton.layer.masksToBounds = YES;
         _skipButton.titleLabel.font = [UIFont systemFontOfSize:13.5];
-        [_skipButton addTarget:self action:@selector(skipAction) forControlEvents:UIControlEventTouchUpInside];
+        __weak LLFullScreenAdView *weakSelf = self;
+        [_skipButton addTarget:weakSelf action:@selector(skipAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _skipButton;
 }
@@ -68,7 +69,7 @@
         [titleLabel setTextAlignment:NSTextAlignmentCenter];
         titleLabel.font = [UIFont systemFontOfSize:15];
         [_timerView addSubview:titleLabel];
-        _remain = (_duration-0.5) * 20;
+        _remain = _duration * 20;
         _count = 0;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skipAction)];
         [_timerView addGestureRecognizer:tap];
@@ -150,6 +151,10 @@
 /** 显示广告图 */
 - (void)adImageShow
 {
+    if (_flag) {
+        if (_timerWait) dispatch_source_cancel(_timerWait);
+        return;
+    }
     self.userInteractionEnabled = YES;
     if (_skipType == SkipButtonTypeCircleAnimationTest) {
         [self addSubview:self.timerView];
@@ -208,8 +213,8 @@
                 dispatch_source_cancel(_timer);
                 [self dismiss]; // 关闭界面
             } else {
-                _duration--;
                 [self showSkipBtnTitleTime:_duration];
+                _duration--;
             }
         });
     });
@@ -243,8 +248,8 @@
 /** 消失广告图 */
 - (void)dismiss
 {
-    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        
+    [UIView animateWithDuration:0.5 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
+
         self.transform = CGAffineTransformMakeScale(1.2, 1.2);
         self.alpha = 0.0;
     } completion:^(BOOL finished) {

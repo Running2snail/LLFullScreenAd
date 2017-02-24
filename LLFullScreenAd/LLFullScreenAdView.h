@@ -16,7 +16,7 @@ typedef NS_ENUM(NSUInteger, SkipButtonType) {
     SkipButtonTypeNone                        //无
 };
 
-typedef void(^adImageBlock)(NSString *content);
+typedef void(^adImageBlock)(NSString *content);  //可以根据需要添加一些相应的参数
 
 @interface LLFullScreenAdView : UIImageView
 

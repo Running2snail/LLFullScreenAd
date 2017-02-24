@@ -34,7 +34,7 @@
 {
     LLFullScreenAdView *adView = [[LLFullScreenAdView alloc] init];
     adView.tag = 100;
-    adView.duration = 6;
+    adView.duration = 5;
     adView.waitTime = 5;
     adView.skipType = SkipButtonTypeCircleAnimationTest;
     adView.adImageTapBlock = ^(NSString *content) {
@@ -52,9 +52,9 @@
     // 模拟从服务器上获取广告图URL
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        NSString *urlString = @"http://s8.mogucdn.com/p2/170222/28n_8a04gdc37ik8b20a68cdkcah227eh_750x1334.jpg";
+        NSString *urlString = @"http://s8.mogucdn.com/p2/170223/28n_4eb3la6b6b0h78c23d2kf65dj1a92_750x1334.jpg";
         
-        [adView reloadAdImageWithUrl:urlString]; // 加载广告图
+        [adView reloadAdImageWithUrl:urlString]; // 加载广告图（如果没有设置广告图设置为空）
     });
 }
 
