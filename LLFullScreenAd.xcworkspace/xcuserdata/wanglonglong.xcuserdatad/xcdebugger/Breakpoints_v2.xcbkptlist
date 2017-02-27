@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LLFullScreenAd/LLFullScreenAdView.m"
-            timestampString = "509599807.899109"
+            timestampString = "509854346.432139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "-setCircleTimer"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "-adImageShowWithImage:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LLFullScreenAd/LLFullScreenAdView.m"
+            timestampString = "509857609.890499"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
+            landmarkName = "-scheduledWaitTimer"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

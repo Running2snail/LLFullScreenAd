@@ -47,6 +47,23 @@
     return _skipButton;
 }
 
+- (void)setDuration:(NSUInteger)duration
+{
+    _duration = duration;
+    if (duration < 3) {
+        _duration = 3;
+    }
+}
+
+- (void)setWaitTime:(NSUInteger)waitTime
+{
+    _waitTime = waitTime;
+    if (waitTime < 1) {
+        _waitTime = 1;
+    }
+    [self scheduledWaitTimer];              // 启动等待计时器
+}
+
 - (UIView *)timerView
 {
     if (!_timerView) {
@@ -84,7 +101,6 @@
 {
     self.flag = NO;
     self.duration = 5;
-    self.waitTime = 3;
     self.skipType = SkipButtonTypeNormalTimeAndText;
     self.image = [self getLaunchImage];
     self.frame = [[UIScreen mainScreen] bounds];
@@ -131,8 +147,7 @@
     UIImage *cacheImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:urlStr];
     if (cacheImage) {
         NSLog(@"cacheImage");
-        weakSelf.image = cacheImage;
-        [weakSelf adImageShow];
+        [weakSelf adImageShowWithImage:cacheImage];
     } else {
         NSLog(@"noCacheImage");
         SDWebImageManager *manager = [SDWebImageManager sharedManager];
@@ -140,8 +155,8 @@
             
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             if (image && finished && error == nil) {
-                weakSelf.image = image;
-                [weakSelf adImageShow];
+                
+                [weakSelf adImageShowWithImage:image];
                 [[SDImageCache sharedImageCache] storeImage:image forKey:urlStr toDisk:YES];
             }
         }];
@@ -149,12 +164,11 @@
 }
 
 /** 显示广告图 */
-- (void)adImageShow
+- (void)adImageShowWithImage:(UIImage *)image
 {
-    if (_flag) {
-        if (_timerWait) dispatch_source_cancel(_timerWait);
-        return;
-    }
+    if (_flag) return;
+    if (_timerWait) dispatch_source_cancel(_timerWait);
+    self.image = image;
     self.userInteractionEnabled = YES;
     if (_skipType == SkipButtonTypeCircleAnimationTest) {
         [self addSubview:self.timerView];
@@ -176,8 +190,6 @@
 /** 广告图显示倒计时 */
 - (void)setCircleTimer
 {
-    if (_timerWait) dispatch_source_cancel(_timerWait);
-    
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
     dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), 0.05 * NSEC_PER_SEC, 0); // 每秒执行
@@ -211,7 +223,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             if (_duration <= 0) {
                 dispatch_source_cancel(_timer);
-                [self dismiss]; // 关闭界面
+                [self dismiss];                         // 关闭界面
             } else {
                 [self showSkipBtnTitleTime:_duration];
                 _duration--;
@@ -233,10 +245,10 @@
     
     dispatch_source_set_event_handler(_timerWait, ^{
         if (_waitTime <= 0) {
+            _flag = YES;
             dispatch_source_cancel(_timerWait);
             dispatch_async(dispatch_get_main_queue(), ^{
-                _flag = YES;
-                [self dismiss];                 // 关闭界面
+                [self dismiss];                         // 关闭界面
             });
         } else {
             _waitTime--;
@@ -248,6 +260,7 @@
 /** 消失广告图 */
 - (void)dismiss
 {
+    NSLog(@"dismiss");
     [UIView animateWithDuration:0.5 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
 
         self.transform = CGAffineTransformMakeScale(1.2, 1.2);
